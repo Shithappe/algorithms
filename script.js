@@ -10,8 +10,7 @@ function initArray(event){
 
 function sort(event){
     event.preventDefault();
-    console.log(data);
-    console.log(qsort(data));
+    document.getElementsByClassName('answer')[0].innerHTML = '[' + qsort(data) + ']';
 }
 
 function pivod(arr){
