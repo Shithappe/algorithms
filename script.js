@@ -1,4 +1,4 @@
-let data = ['5', '4', '3', '2', '1'];
+let data = [];
 
 function initArray(event){
     event.preventDefault();
@@ -14,19 +14,27 @@ function sort(event){
     console.log(qsort(data));
 }
 
+function pivod(arr){
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        sum += Number(arr[i]);
+    }
+    return Math.floor(sum / arr.length);
+}
+
 function qsort(arr){
+    console.log('pivid: ', pivod(arr));
     if (arr.length < 2) return arr;                 // выход из рекурсии
 
-    let p = Math.round(arr.length / 2) - 1;         //index of опорный элемент
-    let pp = arr[p];                                //сам опорный элемент
-    console.log(pp);
+    // let p = Math.round(arr.length / 2) - 1;         //index of опорный элемент
+    let pp = pivod(arr);                            //сам опорный элемент
 
     let min = [];
     let max = [];
 
     for (let i = 0; i < arr.length; i++) {
         let temp = arr[i];
-        if (arr[i] < pp) {
+        if (arr[i] <= pp) {
             arr.splice(i, 1, null);                 //заменяем элемент на null (для сохранения индексации) 
             min.push(temp);
         }
@@ -36,5 +44,5 @@ function qsort(arr){
         }
         console.log(arr, i);
     }
-    return [...qsort(min), pp, ...qsort(max)];      // запускаем рекурсию 
+    return [...qsort(min), ...qsort(max)];      // запускаем рекурсию 
 }
