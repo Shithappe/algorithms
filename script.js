@@ -25,7 +25,6 @@ function qsort(arr){
     console.log('pivid: ', pivod(arr));
     if (arr.length < 2) return arr;                 // выход из рекурсии
 
-    // let p = Math.round(arr.length / 2) - 1;         //index of опорный элемент
     let pp = pivod(arr);                            //сам опорный элемент
 
     let min = [];
