@@ -10,10 +10,10 @@ function initArray(event){
 
 function sort(event){
     event.preventDefault();
-    document.getElementsByClassName('answer')[0].innerHTML = '[' + qsort(data) + ']';
+    document.getElementsByClassName('answer')[0].innerHTML = '[' + qsort(data) + ']';  // кладём в answer результат функции
 }
 
-function pivod(arr){
+function pivod(arr){                                // высчисляем опоный элемент 
     let sum = 0;
     for (let i = 0; i < arr.length; i++) {
         sum += Number(arr[i]);
@@ -27,10 +27,10 @@ function qsort(arr){
 
     let pp = pivod(arr);                            //сам опорный элемент
 
-    let min = [];
-    let max = [];
+    let min = [];                                   // <= опорного элемента 
+    let max = [];                                   // > опорного элемента 
 
-    for (let i = 0; i < arr.length; i++) {
+    for (let i = 0; i < arr.length; i++) {          // цикл для разбиения исходного массива
         let temp = arr[i];
         if (arr[i] <= pp) {
             arr.splice(i, 1, null);                 //заменяем элемент на null (для сохранения индексации) 
@@ -42,5 +42,5 @@ function qsort(arr){
         }
         console.log(arr, i);
     }
-    return [...qsort(min), ...qsort(max)];      // запускаем рекурсию 
+    return [...qsort(min), ...qsort(max)];         // запускаем рекурсию 
 }

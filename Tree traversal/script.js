@@ -10,13 +10,12 @@ document.body.addEventListener('click', function(e){
 
 
 function walk(root, checked) {
-    if (!root) return;
     if (root.type == 'checkbox') root.checked = checked;    // если находим чекбос - отмечаем его
     let tree = root.children;                               // дети элемента 
-    if (tree) {
-        for (let i = 0; i < tree.length; i++) {
-            walk(tree[i], checked);
+    
+    if (tree) {                                             // если есть дети
+        for (let i = 0; i < tree.length; i++) {             // для каждого ребёнка 
+            walk(tree[i], checked);                         // парлнить функциюю (запуск рекурсии)
         }
     }
 }
-
